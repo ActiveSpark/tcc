@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.3.102
+
+### Help
+- Issue reports now go to TCC's public issue tracker on GitHub (github.com/ActiveSpark/tcc). The report window has **Open GitHub**, which opens a new bug report filled in with your version, platform and the end of the diagnostics log, and copies the full report to the clipboard. **Report Issue** in the command palette opens the same page. **Send** still sends your report straight to us, without a GitHub account. To remove the GitHub button, set `"issueTrackerUrl": ""` in `tcc-config.json`.
+- The changelog's **View releases** button opens the GitHub Releases page, where each release's zip and installer are also published.
+
+## v0.3.101
+
+### Updates
+- The update dialog has **Get release notes by email**: type your address and choose Subscribe, then open the link in the confirmation email. You get one email when each new version is out, and every email has a one-click unsubscribe link.
+- The status bar's ⋯ menu has **Community discussions**, which opens TCC's GitHub Discussions (also in the command palette as Open Community Discussions).
 ## v0.3.100
 
 ### Phone
