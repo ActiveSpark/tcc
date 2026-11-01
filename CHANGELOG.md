@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.3.103
+
+### Safety fixes
+- **"No" from the phone or watch no longer approves a Claude Code permission request.** The phone and watch send "no" and Enter. Claude Code's permission menu ignores the letters, and Enter picked the highlighted "1. Yes", so the tool call was allowed. TCC now sends Escape instead, which rejects the request. Outside a menu, "no" is typed as before.
+- **Nothing TCC types can answer an open Claude Code menu by accident.** Before this release, a phone snippet approved a file write, a "Yes" quick reply at the folder-trust menu quit Claude Code, and Wake (F5), Ping and Restart Session each approved a waiting request. Now, while a menu is open: "Yes, go ahead" presses Enter only when a Yes option is highlighted, other text from the phone or watch is typed without its Enter, and Wake, Ping and Restart Session show a message instead of typing. The Factory waits at a menu instead of typing its next step into it, and no longer takes a permission menu that mentions trust for the folder-trust question.
+- **The phone and watch endpoint is off until you use it.** A new install opens no network port and does not announce itself on the local network until you press **Pair a phone or watch** or turn on **Phones and watches** in Settings → Remote devices. Opening Settings no longer starts it. An existing install with a paired device or a TCC Cloud sign-in keeps starting it as before; one with neither is switched off once. Settings → Remote devices also has **Listen on**: Only this PC (127.0.0.1) or Local network.
+
+### AI sessions
+- **Claude Code permission prompts show as Needs approval.** Claude Code writes nothing to its transcript while a permission prompt waits, so TCC used to show "Running tool". Claude sessions that TCC starts now register a Notification hook in TCC's own data folder, so the session glows and the "Approval Needed" notification appears. The hook only reports the prompt, and it can never approve anything. Your own Claude Code settings are not changed. WSL sessions do not get the hook.
+
+### Factory
+- **Loop limit**: a ticket that goes round the same loop too often is held. Each node has a **Loop limit** (5 by default, 0 for no limit). When a ticket arrives at a node more times than that, it is held there, its history says which loop it was in, and you get the needs-you notification. Pushing or dragging the ticket starts the count again.
+- **The sample project asks fewer questions.** It now commits a Claude Code allow list (edits in its folder, and git from Bash and PowerShell), and its prompts ask for one plain git command at a time, so the sample tickets run without permission prompts. A sample made before this release gets the list the next time TCC sets it up. When a sample ticket reaches **Merge it?**, TCC notifies you and highlights Yes and No. The Done card says what changed and what to open.
+- **"How did that go?"** When your first sample ticket finishes, a small card asks how it went, with **Tell us on GitHub**, **Report a problem** and **Not now**. If you leave a sample ticket unfinished, it asks once as "Stuck? Tell us where". Each card appears once. The buttons only open links, and nothing is sent.
+
+### Install
+- tcc.exe's file properties now show Company "ActiveSpark" and Product "Terminal Command Center (TCC)".
+- Each release publishes the SHA-256 hashes of its zip and installer: `tcc-<version>-SHA256SUMS.txt` sits beside the downloads, the GitHub release notes list the hashes with the `Get-FileHash` command to check them, and the site's Download section shows them. TCC is not code-signed yet, so these hashes are how you check a download.
+
+### Website
+- Seven new blog posts: the ledger of every ticket that built TCC, parallel Claude Code agents on Windows, and five Factory workflows (implement, review and merge; test-driven development; bug triage; a docs writer; content with human approval). The site also publishes llms.txt and llms-full.txt, and each post carries BlogPosting structured data.
+- The footer links TCC's GitHub repo. The site's descriptions now match the app, and the workflow gallery's workflows import cleanly and set a loop limit on every loop. The Download section says that both the installer and the zip's tcc.exe are unsigned, and lists what the Factory needs (Claude Code or GitHub Copilot CLI, and git).
+
 ## v0.3.102
 
 ### Help
