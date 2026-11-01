@@ -17,12 +17,18 @@ Windows 10 or 11 (64-bit).
 
 Every release is also on the [Releases page](https://github.com/ActiveSpark/tcc/releases), with its notes. The installer is not code-signed yet, so Windows SmartScreen may warn "unknown publisher": choose **More info**, then **Run anyway**.
 
+To check that a download is the file we built, compare its SHA-256 with the one in that version's release notes (also in its `tcc-<version>-SHA256SUMS.txt`). In PowerShell, in the folder you saved it to:
+
+```powershell
+Get-FileHash .\tcc-<version>-win-x64.zip -Algorithm SHA256
+```
+
 ## What it does
 
 - **Factory:** draw a workflow (plan, review, implement, test) and drop tickets into it. Each ticket gets its own git worktree and its own agent session, and waits for you only where you said it should.
 - **Many agents, one window:** split panes, tabs and a session list that shows which agent is working, which is done and which is waiting for you.
 - **Review before you merge:** see each worktree's diff and send comments straight back to the agent.
-- **Phone and watch:** follow sessions and Factory tickets, answer the agent that is waiting and press Next from your phone or Wear OS watch, on your network or through the end-to-end encrypted cloud relay.
+- **Phone:** follow sessions and Factory tickets, answer the agent that is waiting and press Next from your Android phone, on your network or through the end-to-end encrypted cloud relay. A Wear OS watch app answers waiting sessions too (no Factory screens); it is not publicly downloadable yet.
 
 | | |
 |---|---|
