@@ -1,0 +1,36 @@
+{
+  "version": "0.3.103",
+  "description": "Terminal Command Center, a Windows terminal workspace for AI coding agents.",
+  "homepage": "https://tcc.activespark.io/",
+  "license": "Proprietary",
+  "notes": "Update TCC with `scoop update tcc`, not with TCC's own Check for Updates, so Scoop keeps track of the version.",
+  "architecture": {
+    "64bit": {
+      "url": "https://relay.tcc.activespark.io/downloads/tcc-0.3.103-win-x64.zip",
+      "hash": "bda6f14d5ccf729a76a0425de391d6052e74db328c0ae479ddccf2ab4753a3db"
+    }
+  },
+  "bin": "tcc.exe",
+  "shortcuts": [
+    [
+      "tcc.exe",
+      "TCC"
+    ]
+  ],
+  "checkver": {
+    "url": "https://relay.tcc.activespark.io/v1/updates/latest",
+    "jsonpath": "$.tag_name",
+    "regex": "v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://relay.tcc.activespark.io/downloads/tcc-$version-win-x64.zip",
+        "hash": {
+          "url": "https://relay.tcc.activespark.io/v1/updates/latest",
+          "jsonpath": "$.assets[?(@.name == '$basename')].sha256"
+        }
+      }
+    }
+  }
+}
