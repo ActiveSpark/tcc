@@ -11,6 +11,7 @@
 Windows 10 or 11 (64-bit).
 
 - **winget (coming soon):** `winget install ActiveSpark.TCC`
+- **Scoop:** `scoop bucket add activespark https://github.com/ActiveSpark/tcc` then `scoop install activespark/tcc` (update with `scoop update tcc`).
 - **Installer:** [download the latest tcc-setup .exe](https://relay.tcc.activespark.io/download/windows-installer). It adds Start-menu and desktop shortcuts, and TCC keeps itself up to date.
 - **Portable:** [download the latest .zip](https://relay.tcc.activespark.io/download/windows), unzip it anywhere and run `tcc.exe`.
 - **Android phone:** [download the APK](https://relay.tcc.activespark.io/download/android), then pair it from TCC on your PC.
